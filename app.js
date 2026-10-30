@@ -15,12 +15,16 @@ function setMore(o){$('#chips').hidden=!o;if(o&&lastC)pickM(lastC);$('#tgl').tex
 $('#tgl').onclick=()=>setMore($('#chips').hidden);
 const norm=s=>s.toLowerCase().replace(/ё/g,'е').replace(/[^a-zа-я0-9 ]/g,' ');
 function find(q){const w=norm(q).split(/\s+/).filter(x=>x.length>2);let best=null,bs=0;
- KB.forEach(k=>{const hay=norm(k.k+' '+k.q);let s=0;w.forEach(x=>{const st=x.slice(0,Math.max(4,x.length-2));if(hay.includes(st))s+=1});if(s>bs){bs=s;best=k}});return bs?best:null}
+ const sc=hay=>{let s=0;w.forEach(x=>{const st=x.slice(0,Math.max(4,x.length-2));if(hay.includes(st))s+=1});return s};
+ KB.forEach(k=>{const s=sc(norm(k.k+' '+k.q));if(s>bs){bs=s;best=k}});
+ (window.NORMS||[]).forEach(n=>{const s=sc(norm(n.k+' '+n.sum+' '+n.act+' '+n.num));if(s>bs+1){bs=s;const o=KB.find(k=>k.n&&k.n.includes(n.id));best={c:o?o.c:'as',a:n.sum+'<br><br><i>Это пересказ нормы, а не юридическое заключение. Уточните применение в юридическом отделе Ассоциации: 8 (017) 322-03-53.</i>',s:['Официальный текст на pravo.by'],n:[n.id]}}});return bs?best:null}
+function legal(k){if(!k.n||!window.NORMS)return'';const L=k.n.map(id=>NORMS.find(n=>n.id===id)).filter(Boolean);if(!L.length)return'';
+ return '<div class="law"><b>⚖️ Правовая основа</b>'+L.map(n=>'<div class="ln"><a href="'+n.url+'" target="_blank" rel="noopener">'+esc(n.act)+' от '+n.date+' '+n.num+', '+n.art+'</a>'+(n.quote?'<q>'+esc(n.quote)+'</q>':'')+'<small>'+esc(n.ed)+'</small></div>').join('')+'</div>'}
 function add(html,cls){const d=document.createElement('div');d.className='msg '+cls;d.innerHTML=html;chat.appendChild(d);d.scrollIntoView({behavior:'smooth',block:'start'});return d}
 const esc=s=>s.replace(/[&<>"]/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;'}[c]));
 let lastC=null;
 function ask(q,k){$('#welcome')&&$('#welcome').remove();$('#more').hidden=false;add(esc(q),'me');k=k||find(q);if(k)lastC=k.c;
- setTimeout(()=>{let h;if(k){h='<span class="tag">'+CAT[k.c].t+'</span><br>'+k.a+'<div class="src">📄 Источник: '+k.s.join('; ')+'</div>'}
+ setTimeout(()=>{let h;if(k){h='<span class="tag">'+CAT[k.c].t+'</span><br>'+k.a+legal(k)+'<div class="src">📄 Источник: '+k.s.join('; ')+'</div>'}
   else h='В бюллетенях и новостях Ассоциации я не нашла ответа на этот вопрос. Не хочу ничего выдумывать — лучше уточнить у специалистов Ассоциации.';
   h+='<div class="acts">'+(k&&k.form?'<button class="btn" data-open="form">📝 Подать предложение</button>':'')+'<button class="btn o" data-open="contact">Нужен юрист / Связаться с ассоциацией</button></div>';
   const m=add(h,'bot');const ad=document.createElement('div');ad.className='ad';ad.innerHTML='<em>Реклама</em><b>Партнёр Ассоциации</b> — здесь может быть предложение партнёра (пример размещения, макет).';m.after(ad);m.scrollIntoView({behavior:'smooth',block:'start'})},350)}
