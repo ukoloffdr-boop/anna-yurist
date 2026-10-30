@@ -28,7 +28,7 @@ $('#ask').onsubmit=e=>{e.preventDefault();const v=$('#q').value.trim();if(v){ask
 document.addEventListener('click',e=>{const o=e.target.closest('[data-open]');if(o)$('#'+o.dataset.open).classList.add('on');
  if(e.target.closest('[data-close]')||e.target.classList.contains('sheet'))document.querySelectorAll('.sheet').forEach(s=>s.classList.remove('on'))});
 $('#pf').onsubmit=e=>{e.preventDefault();const f=Object.fromEntries(new FormData(e.target));
- const body=`Предложение в Национальную платформу бизнеса Беларуси 2027–2029 гг.\n\nКомпания: ${f.company}\nУНП: ${f.unp||'—'}\nРегион: ${f.region}\n\nПроблема:\n${f.problem}\n\nПредложение:\n${f.proposal}\n\nКонтакт: ${f.contact||'—'}\n\n(отправлено через «Анна-Юрист»)`;
+ const body=`Предложение в Национальную платформу бизнеса Беларуси 2027–2029 гг.\n\nКомпания: ${f.company}\nУНП: ${f.unp||'—'}\nРегион: ${f.region}\n\nПроблема:\n${f.problem}\n\nПредложение:\n${f.proposal}\n\nКонтакт: ${f.contact||'—'}\n\n(отправлено через «Алеся-Юрист»)`;
  const url='mailto:bsp_prom@mail.ru?subject='+encodeURIComponent('Предложение в Нацплатформу бизнеса 2027–2029 — '+f.company)+'&body='+encodeURIComponent(body);
  if(tg&&tg.initData&&tg.openLink)tg.openLink(url);else location.href=url};
 if('serviceWorker' in navigator)navigator.serviceWorker.register('sw.js').catch(()=>{});
