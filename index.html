@@ -1,0 +1,67 @@
+<!doctype html><html lang="ru"><head><meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
+<meta name="theme-color" content="#0c467b"><title>Анна-Юрист · БСП-пром</title>
+<link rel="manifest" href="manifest.json"><link rel="apple-touch-icon" href="apple-touch-icon.png"><link rel="icon" href="icon-192.png">
+<script src="https://telegram.org/js/telegram-web-app.js" async></script>
+<style>
+:root{--deep:#0c467b;--mid:#196a9d;--light:#5b8eb2;--pale:#e8f1f8;--ink:#14243a;--muted:#5a6b80;--bg:#f7fafd;--card:#fff;--r:14px}
+*{box-sizing:border-box}html,body{margin:0;height:100%}
+body{font:15px/1.45 -apple-system,Segoe UI,Roboto,Arial,sans-serif;background:var(--bg);color:var(--ink);display:flex;flex-direction:column;max-width:560px;margin:0 auto}
+header{background:linear-gradient(135deg,var(--deep),var(--mid));color:#fff;padding:calc(10px + env(safe-area-inset-top)) 14px 10px;display:flex;align-items:center;gap:10px}
+header img.av{width:42px;height:42px;border-radius:50%;border:2px solid #fff;object-fit:cover}
+header .t b{display:block;font-size:16px}header .t span{font-size:12px;opacity:.9}
+.dot{display:inline-block;width:8px;height:8px;border-radius:50%;background:#22c55e;margin-right:4px}
+header .logo{margin-left:auto;height:30px;background:#fff;border-radius:6px;padding:3px}
+main{flex:1;overflow-y:auto;padding:14px}
+.welcome{text-align:center;padding:10px 4px}.welcome img{width:110px;height:110px;border-radius:50%;object-fit:cover;border:4px solid #fff;box-shadow:0 4px 18px #0c467b33}
+.welcome h1{font-size:21px;margin:10px 0 2px;color:var(--deep)}.welcome p{color:var(--muted);margin:6px 0}
+.badge{display:inline-block;background:var(--pale);color:var(--deep);border-radius:20px;padding:4px 10px;font-size:12px;font-weight:600}
+.msg{max-width:88%;padding:10px 12px;border-radius:var(--r);margin:8px 0;box-shadow:0 1px 3px #0001}
+.me{background:var(--deep);color:#fff;margin-left:auto;border-bottom-right-radius:4px}
+.bot{background:var(--card);border-bottom-left-radius:4px}
+.src{margin-top:8px;font-size:12px;color:var(--mid);border-top:1px dashed #cfdbe6;padding-top:6px}
+.acts{display:flex;gap:6px;flex-wrap:wrap;margin-top:8px}
+.btn{border:0;border-radius:10px;padding:9px 12px;font:600 13px inherit;cursor:pointer;background:var(--deep);color:#fff}
+.btn.o{background:#fff;color:var(--deep);border:1.5px solid var(--deep)}
+.ad{max-width:88%;margin:4px 0 10px;border:1px dashed #b9c7d4;border-radius:12px;padding:8px 10px;background:#fffdf5;font-size:12.5px;color:var(--muted)}
+.ad em{font-style:normal;background:#ffd76a;color:#3a2c00;font-weight:700;border-radius:4px;padding:1px 6px;font-size:11px;margin-right:6px}
+.chips[hidden]{display:none}.chips{display:flex;gap:6px;overflow-x:auto;padding:8px 14px 4px;scrollbar-width:none}
+.chips button{flex:0 0 auto;border:1px solid #c9d8e6;background:#fff;color:var(--deep);border-radius:18px;padding:7px 11px;font:13px inherit;cursor:pointer}
+..chips[hidden]{display:none}.chips{display:flex;flex-direction:column;gap:7px;margin-top:14px}.wchips button{text-align:left;border:1px solid #c9d8e6;background:#fff;color:var(--deep);border-radius:12px;padding:10px 12px;font:14px inherit;cursor:pointer}
+form.in{display:flex;gap:8px;padding:8px 14px calc(8px + env(safe-area-inset-bottom));background:#fff;border-top:1px solid #e3eaf1}
+form.in input{flex:1;border:1px solid #c9d8e6;border-radius:22px;padding:10px 14px;font:15px inherit}
+form.in button{border:0;border-radius:50%;width:42px;height:42px;background:var(--deep);color:#fff;font-size:18px}
+.disc{font-size:11px;color:var(--muted);text-align:center;padding:4px 14px 0;background:#fff}
+.sheet{position:fixed;inset:0;background:#0007;display:none;align-items:flex-end;justify-content:center;z-index:9}
+.sheet.on{display:flex}.sheet>div{background:#fff;width:100%;max-width:560px;border-radius:18px 18px 0 0;padding:16px 16px calc(16px + env(safe-area-inset-bottom));max-height:92%;overflow-y:auto}
+.sheet h2{margin:0 0 6px;font-size:18px;color:var(--deep)}.sheet label{display:block;font-size:12.5px;color:var(--muted);margin-top:8px}
+.sheet input,.sheet textarea,.sheet select{width:100%;border:1px solid #c9d8e6;border-radius:10px;padding:9px;font:14px inherit;margin-top:3px}
+.sheet textarea{min-height:70px}.row{display:flex;gap:8px}.row>*{flex:1}
+.ct a{display:block;padding:11px;border-radius:10px;background:var(--pale);margin:7px 0;color:var(--deep);text-decoration:none;font-weight:600}
+</style></head><body>
+<header><img class="av" src="anna-sm.jpg" alt=""><div class="t"><b>AI-юрист Анна</b><span><i class="dot"></i>Online · РА «БСП-пром»</span></div><img class="logo" src="logo.png" alt="БСП-пром"></header>
+<main id="chat"><section class="welcome" id="welcome">
+<img src="anna-sm.jpg" alt="Анна"><h1>Здравствуйте, я Анна</h1>
+<span class="badge">Национальная платформа бизнеса 2027–2029</span>
+<p>Бесплатный AI-помощник для предпринимателей Беларуси от Республиканской ассоциации бизнеса и нанимателей «БСП-пром». Отвечаю по Информационному бюллетеню №3 (июль–сентябрь 2026) — со ссылкой на страницу.</p>
+<div class="wchips" id="wchips"></div>
+<div class="acts" style="justify-content:center;margin-top:12px"><button class="btn" data-open="form">📝 Подать предложение в Платформу</button><button class="btn o" data-open="contact">👩‍⚖️ Нужен юрист</button></div>
+</section></main>
+<div class="chips" id="chips" hidden></div>
+<div class="disc">Справочная информация, не юридическая консультация. Прототип.</div>
+<form class="in" id="ask"><input id="q" placeholder="Спросите о Платформе…" autocomplete="off"><button aria-label="Отправить">➤</button></form>
+
+<div class="sheet" id="contact"><div><h2>Связаться с ассоциацией</h2><p style="color:var(--muted);margin:0">Исполнительная дирекция РА «БСП-пром», пн–пт 9:00–17:00</p>
+<div class="ct"><a href="tel:+375173220353">📞 +375 17 322-03-53</a><a href="mailto:bsp_prom@mail.ru">✉️ bsp_prom@mail.ru</a><a href="https://maps.google.com/?q=Минск, пр-т Жукова 44" target="_blank" rel="noopener">📍 220014 Минск, пр-т Жукова 44, пом. 402</a></div>
+<p style="font-size:12.5px;color:var(--muted)">Юридический отдел: Стрельчик С.Л., 8029 767-62-42, str@legservices.com — бесплатно для полномочных членов без задолженности по взносам (Бюллетень №3, стр. 1).</p>
+<button class="btn o" data-close style="width:100%">Закрыть</button></div></div>
+
+<div class="sheet" id="form"><div><h2>Предложение в Национальную платформу бизнеса</h2>
+<p style="color:var(--muted);margin:0;font-size:13px">Письмо будет сформировано в вашем почтовом приложении на bsp_prom@mail.ru. Мы ничего не храним.</p>
+<form id="pf"><div class="row"><div><label>Компания*<input name="company" required></label></div><div><label>УНП<input name="unp" inputmode="numeric" pattern="\d{9}" title="9 цифр"></label></div></div>
+<label>Регион*<select name="region" required><option value="">— выберите —</option><option>г. Минск</option><option>Минская обл.</option><option>Брестская обл.</option><option>Витебская обл.</option><option>Гомельская обл.</option><option>Гродненская обл.</option><option>Могилевская обл.</option></select></label>
+<label>Проблема (что мешает бизнесу)*<textarea name="problem" required></textarea></label>
+<label>Предложение (как решить)*<textarea name="proposal" required></textarea></label>
+<label>Контакт для обратной связи<input name="contact" placeholder="телефон или e-mail"></label>
+<div class="acts"><button class="btn" type="submit" style="flex:1">Сформировать письмо</button><button class="btn o" type="button" data-close>Отмена</button></div></form></div></div>
+<script src="kb.js"></script><script src="app.js"></script></body></html>
