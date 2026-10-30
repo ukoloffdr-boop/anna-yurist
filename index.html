@@ -41,18 +41,32 @@ form.in button{border:0;border-radius:50%;width:42px;height:42px;background:var(
 .sheet input,.sheet textarea,.sheet select{width:100%;border:1px solid #c9d8e6;border-radius:10px;padding:9px;font:14px inherit;margin-top:3px}
 .sheet textarea{min-height:70px}.row{display:flex;gap:8px}.row>*{flex:1}
 .ct a{display:block;padding:11px;border-radius:10px;background:var(--pale);margin:7px 0;color:var(--deep);text-decoration:none;font-weight:600}
+.cats{display:grid;grid-template-columns:1fr 1fr;gap:8px;margin-top:14px;text-align:left}
+.cats button{border:1.5px solid #c9d8e6;background:#fff;border-radius:14px;padding:10px 11px;cursor:pointer;font:inherit;color:var(--ink);text-align:left}
+.cats button b{display:block;font-size:14.5px;color:var(--deep)}.cats button span{display:block;font-size:11.5px;color:var(--muted);line-height:1.35;margin-top:2px}
+.cats button em{font-style:normal;font-size:11px;color:var(--mid);font-weight:600}
+.cats button.on{border-color:var(--deep);background:var(--pale);box-shadow:0 0 0 1px var(--deep) inset}
+.cats button:last-child:nth-child(odd){grid-column:1/-1}
+.qh{margin:14px 0 0;font-size:15px;color:var(--deep);text-align:left}
+.seg{display:flex;gap:6px;overflow-x:auto;padding-bottom:6px;scrollbar-width:none}.seg::-webkit-scrollbar{display:none}
+.seg button{flex:none;border:1px solid #c9d8e6;background:#fff;color:var(--deep);border-radius:18px;padding:6px 11px;font:600 13px inherit;cursor:pointer;white-space:nowrap}
+.seg button.on{background:var(--deep);color:#fff;border-color:var(--deep)}
+.ql{display:flex;flex-direction:column;gap:6px}
+.tag{display:inline-block;font-size:11.5px;font-weight:700;color:var(--deep);background:var(--pale);border-radius:10px;padding:2px 8px;margin-bottom:6px}
+.chips>.ql button{text-align:left;border:1px solid #c9d8e6;background:#fff;color:var(--deep);border-radius:12px;padding:9px 12px;font:14px inherit;cursor:pointer}
 </style></head><body>
 <header><img class="av" src="anna-sm.jpg" alt=""><div class="t"><b>AI-юрист Анна</b><span><i class="dot"></i>Online · РА «БСП-пром»</span></div><img class="logo" src="logo.png" alt="БСП-пром"></header>
 <main id="chat"><section class="welcome" id="welcome">
 <img src="anna-sm.jpg" alt="Анна"><h1>Здравствуйте, я Анна</h1>
-<span class="badge">Национальная платформа бизнеса 2027–2029</span>
-<p>Бесплатный AI-помощник для предпринимателей Беларуси от Республиканской ассоциации бизнеса и нанимателей «БСП-пром». Отвечаю по Информационному бюллетеню №3 (июль–сентябрь 2026) — со ссылкой на страницу.</p>
-<div class="wchips" id="wchips"></div>
+<span class="badge">Платформа · Налоги · Проверки · Господдержка</span>
+<p>Бесплатный AI-помощник для предпринимателей Беларуси от Республиканской ассоциации бизнеса и нанимателей «БСП-пром». Отвечаю по информационным бюллетеням и новостям Ассоциации — со ссылкой на источник.</p>
+<div class="cats" id="wcats"></div>
+<h3 class="qh" id="wqh"></h3><div class="wchips" id="wchips"></div>
 <div class="acts" style="justify-content:center;margin-top:12px"><button class="btn" data-open="form">📝 Подать предложение в Платформу</button><button class="btn o" data-open="contact">👩‍⚖️ Нужен юрист</button></div>
 </section></main>
-<div class="more" id="more" hidden><button class="tg" id="tgl" type="button">💬 Другие вопросы ▴</button><div class="chips" id="chips" hidden></div></div>
+<div class="more" id="more" hidden><button class="tg" id="tgl" type="button">💬 Другие вопросы ▴</button><div class="chips" id="chips" hidden><div class="seg" id="seg"></div><div class="ql" id="mq"></div></div></div>
 <div class="disc">Справочная информация, не юридическая консультация. Прототип.</div>
-<form class="in" id="ask"><input id="q" placeholder="Спросите о Платформе…" autocomplete="off"><button aria-label="Отправить">➤</button></form>
+<form class="in" id="ask"><input id="q" placeholder="Задайте вопрос…" autocomplete="off"><button aria-label="Отправить">➤</button></form>
 
 <div class="sheet" id="contact"><div><h2>Связаться с ассоциацией</h2><p style="color:var(--muted);margin:0">Исполнительная дирекция РА «БСП-пром», пн–пт 9:00–17:00</p>
 <div class="ct"><a href="tel:+375173220353">📞 +375 17 322-03-53</a><a href="mailto:bsp_prom@mail.ru">✉️ bsp_prom@mail.ru</a><a href="https://maps.google.com/?q=Минск, пр-т Жукова 44" target="_blank" rel="noopener">📍 220014 Минск, пр-т Жукова 44, пом. 402</a></div>
