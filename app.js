@@ -4,14 +4,16 @@ function initTg(){const t=window.Telegram&&Telegram.WebApp;if(!t||!t.initData)re
  if(p.bg_color)document.body.style.background=p.bg_color;if(p.text_color)document.body.style.color=p.text_color;}
 window.addEventListener('load',initTg);
 const PRESET=KB.map(x=>x);
-function chipsInto(el,cls){PRESET.forEach(k=>{const b=document.createElement('button');b.textContent=k.q;b.onclick=()=>ask(k.q,k);el.appendChild(b)})}
+function chipsInto(el,cls){PRESET.forEach(k=>{const b=document.createElement('button');b.textContent=k.q;b.onclick=()=>{setMore(false);ask(k.q,k)};el.appendChild(b)})}
 chipsInto($('#wchips'));chipsInto($('#chips'));
+function setMore(o){$('#chips').hidden=!o;$('#tgl').textContent=o?'✕ Скрыть вопросы':'💬 Другие вопросы ▴'}
+$('#tgl').onclick=()=>setMore($('#chips').hidden);
 const norm=s=>s.toLowerCase().replace(/ё/g,'е').replace(/[^a-zа-я0-9 ]/g,' ');
 function find(q){const w=norm(q).split(/\s+/).filter(x=>x.length>2);let best=null,bs=0;
  KB.forEach(k=>{const hay=norm(k.k+' '+k.q);let s=0;w.forEach(x=>{const st=x.slice(0,Math.max(4,x.length-2));if(hay.includes(st))s+=1});if(s>bs){bs=s;best=k}});return bs?best:null}
 function add(html,cls){const d=document.createElement('div');d.className='msg '+cls;d.innerHTML=html;chat.appendChild(d);d.scrollIntoView({behavior:'smooth',block:'start'});return d}
 const esc=s=>s.replace(/[&<>"]/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;'}[c]));
-function ask(q,k){$('#welcome')&&$('#welcome').remove();$('#chips').hidden=false;add(esc(q),'me');k=k||find(q);
+function ask(q,k){$('#welcome')&&$('#welcome').remove();$('#more').hidden=false;add(esc(q),'me');k=k||find(q);
  setTimeout(()=>{let h;if(k){h=k.a+'<div class="src">📄 Источник: '+k.s.join('; ')+'</div>'}
   else h='В Информационном бюллетене №3 я не нашла ответа на этот вопрос. Не хочу ничего выдумывать — лучше уточнить у специалистов Ассоциации.';
   h+='<div class="acts">'+(k&&k.form?'<button class="btn" data-open="form">📝 Подать предложение</button>':'')+'<button class="btn o" data-open="contact">Нужен юрист / Связаться с ассоциацией</button></div>';
