@@ -1,6 +1,6 @@
 <!doctype html><html lang="ru"><head><meta charset="utf-8">
 <meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
-<meta name="theme-color" content="#0c467b"><title>Алеся-Юрист · БСП-пром</title>
+<meta name="theme-color" content="#0c467b"><title>Алеся · ИИ-юрист · Neo Pro System</title>
 <link rel="manifest" href="manifest.json"><link rel="apple-touch-icon" href="apple-touch-icon.png"><link rel="icon" href="icon-192.png">
 <script src="https://telegram.org/js/telegram-web-app.js" async></script>
 <style>
@@ -55,14 +55,35 @@ form.in button{border:0;border-radius:50%;width:42px;height:42px;background:var(
 .ql{display:flex;flex-direction:column;gap:6px}
 .tag{display:inline-block;font-size:11.5px;font-weight:700;color:var(--deep);background:var(--pale);border-radius:10px;padding:2px 8px;margin-bottom:6px}
 .chips>.ql button{text-align:left;border:1px solid #c9d8e6;background:#fff;color:var(--deep);border-radius:12px;padding:9px 12px;font:14px inherit;cursor:pointer}
+.welcome{text-align:left;padding:2px 0}
+.hero{display:flex;gap:14px;align-items:center;background:linear-gradient(135deg,var(--deep),var(--mid));color:#fff;border-radius:18px;padding:14px;box-shadow:0 6px 20px #0c467b40}
+.hero img{width:130px;height:160px;flex:none;border-radius:14px;object-fit:cover;object-position:top;border:3px solid #fff}
+.hero h1{color:#fff;font-size:22px;margin:0 0 6px;line-height:1.2}.hero p{color:#fff;opacity:.95;margin:0 0 8px;font-size:15px;line-height:1.4}
+.hero .badge{background:#ffffff26;color:#fff}
+.sh{font-size:17px;color:var(--deep);margin:18px 0 8px}
+.shr{display:flex;align-items:baseline;justify-content:space-between}.shr a{color:var(--deep);font-weight:600;font-size:13.5px;text-decoration:none}
+.docs{display:grid;grid-template-columns:1fr 1fr;gap:8px}
+.docs a{display:block;background:#fff;border:1.5px solid var(--deep);border-radius:14px;padding:10px 11px;text-decoration:none;color:var(--ink)}
+.docs a i{font-style:normal;font-size:22px;display:block}.docs a b{display:block;color:var(--deep);font-size:14px;line-height:1.25;margin-top:2px}.docs a span{display:block;font-size:11.5px;color:var(--muted);margin-top:2px}
+.docs a.all{display:flex;align-items:center;justify-content:center;background:var(--pale);border-style:dashed}
+.cats{margin-top:0}
+.btn.doc{background:#1f7a4d}
 </style></head><body>
-<header><img class="av" src="anna-sm.jpg" alt=""><div class="t"><b>AI-юрист Алеся</b><span><i class="dot"></i>Online · РА «БСП-пром»</span></div><img class="logo" src="logo.png" alt="БСП-пром"></header>
+<header><img class="av" src="anna-sm.jpg" alt=""><div class="t"><b>Алеся · ИИ-юрист</b><span><i class="dot"></i>Neo Pro System · при поддержке РА «БСП-пром»</span></div><img class="logo" src="logo.png" alt="БСП-пром"></header>
 <main id="chat"><section class="welcome" id="welcome">
-<img src="anna-sm.jpg" alt="Алеся"><h1>Здравствуйте, я Алеся</h1>
-<span class="badge">Платформа · Налоги · Проверки · Господдержка</span>
-<p>Бесплатный AI-помощник для предпринимателей Беларуси от Республиканской ассоциации бизнеса и нанимателей «БСП-пром». Отвечаю по информационным бюллетеням и новостям Ассоциации — со ссылкой на источник.</p>
+<div class="hero"><img src="anna.jpg" alt="Алеся — ИИ-юрист"><div><h1>Здравствуйте, я Алеся</h1><p>Ваш бесплатный ИИ-юрист для бизнеса Беларуси. Отвечаю со ссылкой на закон.</p><span class="badge">⚖️ Нормы по pravo.by</span></div></div>
+<h2 class="sh">📝 Составить документ</h2>
+<div class="docs">
+<a href="/docs/pretenziya-o-vzyskanii-dolga/"><i>💸</i><b>Претензия о долге</b><span>Взыскать оплату с контрагента</span></a>
+<a href="/docs/vozrazheniya-na-akt-proverki/"><i>🛡</i><b>Возражения на акт проверки</b><span>Не согласны с выводами</span></a>
+<a href="/docs/zapros-razyasneniya-nalogovaya/"><i>🧾</i><b>Запрос в налоговую</b><span>Официальное разъяснение</span></a>
+<a href="/docs/obrashchenie-v-gosorgan/"><i>🏛</i><b>Обращение в госорган</b><span>Письменное обращение юрлица</span></a>
+<a href="/docs/uvedomlenie-ob-otkaze-ot-dogovora/"><i>✂️</i><b>Отказ от договора</b><span>Уведомление контрагенту</span></a>
+<a href="/docs/" class="all"><b>Все шаблоны →</b></a>
+</div>
+<div class="shr"><h2 class="sh">💬 Вопросы по темам</h2><a href="/q/">📚 Все статьи →</a></div>
 <div class="cats" id="wcats"></div>
-<h3 class="qh" id="wqh"></h3><div class="wchips" id="wchips"></div>
+<h3 class="qh" id="wqh">Выберите тему — покажу вопросы</h3><div class="wchips" id="wchips"></div>
 <div class="acts" style="justify-content:center;margin-top:12px"><button class="btn" data-open="form">📝 Подать предложение в Платформу</button><button class="btn o" data-open="contact">👩‍⚖️ Нужен юрист</button></div>
 </section></main>
 <div class="more" id="more" hidden><button class="tg" id="tgl" type="button">💬 Другие вопросы ▴</button><div class="chips" id="chips" hidden><div class="seg" id="seg"></div><div class="ql" id="mq"></div></div></div>
